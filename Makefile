@@ -38,12 +38,12 @@ build-base:
 build-SST:
 	docker build \
 		-f docker/SST.Dockerfile \
-		-t ${USER}/sst-base .
+		-t ${USER}sst-base .
 
 exec-SST:
 	docker run \
 		--runtime nvidia ${DOCKER_OPTS} \
-		-v $${PWD}/SST:/work_dir/SST \
+		-v $${PWD}/repos/SST:/work_dir/SST \
 		-v ${DATASET_ROOT}:/work_dir/datasets \
 		-v $${PWD}/docker_home:/home/${USER} \
 		${USER}/sst-base

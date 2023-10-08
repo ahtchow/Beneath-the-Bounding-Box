@@ -33,7 +33,7 @@ endif
 build-base:
 	docker build \
 		-f docker/base.Dockerfile \
-		-t btbb-base .
+		-t ${USER}/btbb-base .
 
 build-SST:
 	docker build \
@@ -46,6 +46,7 @@ exec-SST:
 		-v $${PWD}/repos/SST:/work_dir/SST \
 		-v ${DATASET_ROOT}:/work_dir/datasets \
 		-v $${PWD}/docker_home:/home/${USER} \
+		-v $${PWD}/waymo-od:/work_dir/waymo-od \
 		${USER}/sst-base
 
 build-flatformer: build-SST
@@ -67,3 +68,6 @@ exec-DSVT:
 		-v ${DATASET_ROOT}:/work_dir/datasets \
 		-v $${PWD}/docker_home:/home/${USER} \
 		${USER}/sst-base
+
+docker-exec:
+	docker exec -it ${PROJECT} bash

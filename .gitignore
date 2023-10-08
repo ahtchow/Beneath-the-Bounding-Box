@@ -5,3 +5,7 @@
 .local
 
 .python_history
+
+*.pth
+
+*.bin
